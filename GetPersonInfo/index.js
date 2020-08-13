@@ -2,9 +2,8 @@ const korClient = require('kor-client')
 const config = require('../config')
 
 module.exports = async function (context, req) {
-  context.log(['info', 'GetPersonInfo'])
   const userPayload = req.body
-  context.log(userPayload)
+  context.log(['info', 'GetPersonInfo', userPayload])
 
   if (!Array.isArray(userPayload)) {
     context.log.error(['error', 'GetPersonInfo', 'payload must be an array!'])
