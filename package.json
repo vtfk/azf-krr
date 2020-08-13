@@ -1,0 +1,18 @@
+{
+  "name": "azf-kor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "keywords": [],
+  "author": "Mats Andreassen <matsand@live.no> (https://github.com/matsand)",
+  "license": "MIT",
+  "dependencies": {
+    "kor-client": "1.0.0"
+  },
+  "devDependencies": {
+    "standard": "14.3.4"
+  }
+}
