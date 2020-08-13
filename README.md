@@ -1,6 +1,7 @@
 # azf-kor
 
 Azure function api for kontakt- og reservasjonsregisteret
+
 Retrives token from difi with [server-to-server-oauth2](https://difi.github.io/idporten-oidc-dokumentasjon/oidc_auth_server-to-server-oauth2.html)
 
 ## API
