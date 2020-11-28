@@ -13,6 +13,6 @@
     "kor-client": "1.0.0"
   },
   "devDependencies": {
-    "standard": "14.3.4"
+    "standard": "16.0.3"
   }
 }
