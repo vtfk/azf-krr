@@ -1,31 +1,12 @@
 # azf-krr
 
-Azure function api for kontakt- og reservasjonsregisteret
+Azure function API for oppslag mot kontakt- og reservasjonsregisteret
 
-Retrives token from difi with [server-to-server-oauth2](https://difi.github.io/idporten-oidc-dokumentasjon/oidc_auth_server-to-server-oauth2.html)
-
-## Azure Function
-
-### Application settings (``local.settings.json``)
-
-```json
-{
-  "IsEncrypted": false,
-  "Values": {
-    "FUNCTIONS_WORKER_RUNTIME": "node",
-    "AzureWebJobsStorage": "",
-    "KRR_URL": "https://oidc.difi.no/",
-    "KRR_SCOPE": "global/kontaktinformasjon.read",
-    "KRR_ISSUER": "<ISSUER>",
-    "KRR_CERT": "<CERT>",
-    "KRR_PRIVATE_KEY": "<PRIVATE KEY>"
-  }
-}
-```
+Henter token fra maskinporten ved hjelp av [server-til-server oauth2](https://docs.digdir.no/oidc_auth_server-to-server-oauth2.html).
 
 ## API
 
-### POST ```/GetPersonInfo```
+### GET ```/lookup```
 
 **Request**
 A array with one or more personal ids.
@@ -53,5 +34,22 @@ A array with one or more personal ids.
       }
     }
   ]
+}
+```
+
+## Azure Function
+
+### Application settings (``local.settings.json``)
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AzureWebJobsStorage": "",
+    "MASKINPORTEN_ISSUER": "<ISSUER/ClientId>",
+    "MASKINPORTEN_CERT": "<CERT>",
+    "MASKINPORTEN_PRIVATE_KEY": "<PRIVATE KEY>"
+  }
 }
 ```
