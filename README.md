@@ -31,7 +31,9 @@ A array with one or more personal ids.
         mobiltelefonnummer: "41514965",
         mobiltelefonnummer_oppdatert: "2014-03-20T10:44:39+01",
         mobiltelefonnummer_sist_verifisert: "2018-07-31T23:19:02+02"
-      }
+      },
+      "spraak": "nb",
+      "spraak_oppdatert": "2018-11-20T00:00:00+01"
     }
   ]
 }
