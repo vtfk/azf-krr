@@ -49,6 +49,7 @@ A array with one or more personal ids.
   "Values": {
     "FUNCTIONS_WORKER_RUNTIME": "node",
     "AzureWebJobsStorage": "",
+    "JWT_SECRET": "<JWT SECRET>",
     "MASKINPORTEN_ISSUER": "<ISSUER/ClientId>",
     "MASKINPORTEN_CERT": "<CERT>",
     "MASKINPORTEN_PRIVATE_KEY": "<PRIVATE KEY>"
