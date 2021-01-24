@@ -5,14 +5,15 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
+      "route": "lookup",
       "methods": [
-        "post"
+        "get"
       ]
     },
     {
       "type": "http",
       "direction": "out",
-      "name": "res"
+      "name": "$return"
     }
   ]
 }

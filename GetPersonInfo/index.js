@@ -1,37 +1,28 @@
-const KRRClient = require('KRR-client')
+const { logger, logConfig } = require('@vtfk/logger')
+const { generateMaskinportenGrant, getMaskinportenToken } = require('../lib/maskinporten-token')
+const { getResponseObject } = require('../lib/get-response-object')
+const { getData } = require('../lib/get-data')
+const HTTPError = require('../lib/http-error')
+
 const config = require('../config')
 
-module.exports = async function (context, req) {
-  const userPayload = req.body
-  context.log(['info', 'GetPersonInfo', userPayload])
-
-  if (!Array.isArray(userPayload)) {
-    context.log.error(['error', 'GetPersonInfo', 'payload must be an array!'])
-    context.res = { status: 400, body: { error: 'Payload must be an array!' } }
-    return
-  }
-
-  const clientOptions = {
-    url: config.url,
-    cert: config.cert,
-    privateKey: config.privateKey,
-    privateKeyPassphrase: config.privateKeyPassphrase,
-    issuer: config.issuer,
-    scope: config.scope
-  }
-
+module.exports = async function (context, { body }) {
+  logConfig({ azure: { context }, prefix: 'get-person-info' })
   try {
-    const client = await KRRClient(clientOptions)
-    const { token: { access_token: token } } = client.getConfig()
-    context.log(['info', 'GetPersonInfo', 'got token'])
+    if (!Array.isArray(body)) throw new HTTPError(400, 'Payload must be an array!')
 
-    const payload = { personidentifikatorer: userPayload }
-    const data = await client.getData({ url: clientOptions.url + 'kontaktinfo-oauth2-server/rest/v1/personer', token, payload })
-    context.log(['info', 'GetPersonInfo', 'got data'])
+    const grant = generateMaskinportenGrant(config.MASKINPORTEN)
+    if (!grant) throw new HTTPError(500, 'Unable to generate grant')
 
-    context.res = { body: data }
+    const token = await getMaskinportenToken({ url: config.MASKINPORTEN.tokenUrl, jwt: grant })
+    if (!token) throw new HTTPError(500, 'Unable to get token')
+
+    const persons = await getData(config.KRR.URL, { personidentifikatorer: body }, token.access_token)
+    return getResponseObject(persons)
   } catch (error) {
-    context.log.error(['error', 'GetPersonInfo', error])
-    context.done(error, error)
+    logger('error', ['err', error.message])
+
+    if (error instanceof HTTPError) return error.toJSON()
+    return new HTTPError(500, 'An unknown error occured', error).toJSON()
   }
 }
