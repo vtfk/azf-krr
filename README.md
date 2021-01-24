@@ -1,4 +1,4 @@
-# azf-kor
+# azf-krr
 
 Azure function api for kontakt- og reservasjonsregisteret
 
@@ -14,11 +14,11 @@ Retrives token from difi with [server-to-server-oauth2](https://difi.github.io/i
   "Values": {
     "FUNCTIONS_WORKER_RUNTIME": "node",
     "AzureWebJobsStorage": "",
-    "KOR_URL": "https://oidc.difi.no/",
-    "KOR_SCOPE": "global/kontaktinformasjon.read",
-    "KOR_ISSUER": "<ISSUER>",
-    "KOR_CERT": "<CERT>",
-    "KOR_PRIVATE_KEY": "<PRIVATE KEY>"
+    "KRR_URL": "https://oidc.difi.no/",
+    "KRR_SCOPE": "global/kontaktinformasjon.read",
+    "KRR_ISSUER": "<ISSUER>",
+    "KRR_CERT": "<CERT>",
+    "KRR_PRIVATE_KEY": "<PRIVATE KEY>"
   }
 }
 ```

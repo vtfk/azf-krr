@@ -1,4 +1,4 @@
-const korClient = require('kor-client')
+const KRRClient = require('KRR-client')
 const config = require('../config')
 
 module.exports = async function (context, req) {
@@ -21,7 +21,7 @@ module.exports = async function (context, req) {
   }
 
   try {
-    const client = await korClient(clientOptions)
+    const client = await KRRClient(clientOptions)
     const { token: { access_token: token } } = client.getConfig()
     context.log(['info', 'GetPersonInfo', 'got token'])
 
