@@ -24,7 +24,7 @@
     "@vtfk/logger": "2.4.1",
     "axios": "0.21.1",
     "jsonwebtoken": "8.5.1",
-    "nanoid": "3.1.21"
+    "nanoid": "3.1.22"
   },
   "devDependencies": {
     "standard": "16.0.3"
