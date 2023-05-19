@@ -4,9 +4,9 @@
 name: Build and deploy Node.js project to Azure Function App - prod-func-krr-api-v1
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
+    branches: [main]
   workflow_dispatch:
 
 env:
