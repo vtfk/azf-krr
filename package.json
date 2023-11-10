@@ -27,6 +27,6 @@
     "nanoid": "3.1.32"
   },
   "devDependencies": {
-    "standard": "16.0.4"
+    "standard": "17.1.0"
   }
 }
