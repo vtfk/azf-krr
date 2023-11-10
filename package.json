@@ -21,7 +21,7 @@
   "author": "Mats Andreassen <matsand@live.no> (https://github.com/matsand)",
   "license": "MIT",
   "dependencies": {
-    "@vtfk/logger": "2.4.1",
+    "@vtfk/logger": "3.0.1",
     "axios": "0.21.4",
     "jsonwebtoken": "^9.0.0",
     "nanoid": "3.1.32"
